@@ -1,8 +1,9 @@
 language: java
-dist: bionic
+
 arch:
   - amd64
   - ppc64le
+  
 git:
   quiet: true
   submodules: false
@@ -11,17 +12,16 @@ jdk:
   - openjdk8
   - openjdk11
 
+# whitelist
 branches:
   only:
     - master
-    - "3.0"
+    - "2.12"
 
 # 2020-08-02, tatu: Let's try caching Maven dependencies (but remove if snapshot builds fail)
-# 2021-03-13, tatu: This has been an endless source of frustration, with not much speedup
-#    Pox on caches that will add spurious fails due to outdate snapsho deps:
-#cache:
-#  directories:
-#    - $HOME/.m2
+cache:
+  directories:
+    - $HOME/.m2
 
 # Below this line is configuration for deploying to the Sonatype OSS repo
 # https://knowm.org/configure-travis-ci-to-deploy-snapshots/
